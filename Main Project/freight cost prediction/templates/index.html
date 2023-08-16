@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREIGHT COST PREDICTION</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body background="/static/images/freight.jpeg">
+<!-- Input Form -->
+<div class="input form" style="float: left; margin-left: 20px;">
+  <form action="/predict" method="post">
+    <h1 id="heading">FREIGHT COST PREDICTION</h1>
+    
+    <br>
+    <div class="input-container">
+      <label for="country">Country:</label>
+      <select id="country" name="Country" class="input-style">
+        <option value="" disabled selected>Select Country</option>
+        <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+        <option value="Vietnam">Vietnam</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="Zambia">Zambia</option>
+        <option value="Tanzania">Tanzania</option>
+        <option value="Rwanda">Rwanda</option>
+        <option value="Haiti">Haiti</option>
+        <option value="Zimbabwe">Zimbabwe</option>
+        <option value="Ethiopia">Ethiopia</option>
+        <option value="South Africa">South Africa</option>
+        <option value="Guyana">Guyana</option>
+        <option value="Namibia">Namibia</option>
+        <option value="Botswana">Botswana</option>
+        <option value="Mozambique">Mozambique</option>
+        <option value="Kenya">Kenya</option>
+        <option value="Rare">Rare</option>
+        <option value="Uganda">Uganda</option>
+        <option value="Swaziland">Swaziland</option>
+        <option value="Ghana">Ghana</option>
+        <option value="Cameroon">Cameroon</option>
+        <option value="South Sudan">South Sudan</option>
+        <option value="Burundi">Burundi</option>
+        <option value="Dominican Republic">Dominican Republic</option>
+        <option value="Malawi">Malawi</option>
+        <option value="Congo, DRC">Congo, DRC</option>
+        <option value="Sudan">Sudan</option>
+        <option value="Mali">Mali</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    
+    <div class="input-container">
+      <label for="managed-by">Managed By:</label>
+      <select id="managed-by" name="Managed By" class="input-style">
+        <option value="" disabled selected>Select Managed By</option>
+        <option value="PMO - US">PMO - US</option>
+        <option value="South Africa Field Office">South Africa Field Office</option>
+        <option value="Haiti Field Office">Haiti Field Office</option>
+        <option value="Ethiopia Field Office">Ethiopia Field Office</option>
+     </select>
+   </div>
+
+    
+    <div class="input-container">
+      <label for="fulfill-via">Fulfill Via:</label>
+      <select id="fulfill-via" name="Fulfill Via" class="input-style">
+        <option value="" disabled selected>Select Fulfill Via</option>
+        <option value="Direct Drop">Direct Drop</option>
+        <option value="From RDC">From RDC</option>
+      </select>
+    </div>
+
+
+
+
+    <div class="input-container">
+      <label for="vendor-inco-term">Vendor INCO Term:</label>
+      <select id="vendor-inco-term" name="Vendor INCO Term" class="input-style">
+        <option value="" disabled selected>Select Vendor INCO Term</option>
+        <option value="EXW">EXW</option>
+        <option value="FCA">FCA</option>
+        <option value="DDU">DDU</option>
+        <option value="CIP">CIP</option>
+        <option value="DDP">DDP</option>
+        <option value="CIF">CIF</option>
+        <option value="N/A - From RDC">N/A - From RDC</option>
+        <option value="DAP">DAP</option>
+      </select>
+    </div> 
+  
+  
+  
+    <div class="input-container">
+      <label for="shipment-mode">Shipment Mode:</label>
+      <select id="shipment-mode" name="Shipment Mode" class="input-style">
+        <option value="" disabled selected>Select Shipment Mode</option>
+        <option value="Air">Air</option>
+        <option value="Truck">Truck</option>
+        <option value="Air Charter">Air Charter</option>
+        <option value="Ocean">Ocean</option>
+      </select>
+    </div>
+
+
+    <div class="input-container">
+      <label for="sub-classification">Sub Classification:</label>
+      <select id="sub-classification" name="Sub Classification" class="input-style">
+        <option value="" disabled selected>Select Sub Classification</option>
+        <option value="HIV test">HIV test</option>
+        <option value="Pediatric">Pediatric</option>
+        <option value="Adult">Adult</option>
+        <option value="HIV test - Ancillary">HIV test - Ancillary</option>
+        <option value="ACT">ACT</option>
+        <option value="Malaria">Malaria</option>
+      </select>
+    </div>
+  
+  
+    <div class="input-container">
+      <label for="vendor">Vendor:</label>
+      <select id="vendor" name="Vendor" class="input-style">
+        <option value="" disabled selected>Select Vendor</option>
+        <option value="Aurobindo Pharma Limited">Aurobindo Pharma Limited</option>
+        <option value="Abbott GmbH & Co. KG">Abbott GmbH & Co. KG</option>
+        <option value="MERCK SHARP & DOHME IDEA GMBH (FORMALLY MERCK SHARP & DOHME B.V.)">MERCK SHARP & DOHME IDEA GMBH (FORMALLY MERCK SHARP & DOHME B.V.)</option>
+        <option value="ABBVIE LOGISTICS (FORMERLY ABBOTT LOGISTICS BV)">ABBVIE LOGISTICS (FORMERLY ABBOTT LOGISTICS BV)</option>
+        <option value="Trinity Biotech, Plc">Trinity Biotech, Plc</option>
+        <option value="CIPLA LIMITED">CIPLA LIMITED</option>
+        <option value="BRISTOL-MYERS SQUIBB">BRISTOL-MYERS SQUIBB</option>
+        <option value="Premier Medical Corporation Ltd.">Premier Medical Corporation Ltd.</option>
+        <option value="CHEMBIO DIAGNOSTIC SYSTEMS, INC.">CHEMBIO DIAGNOSTIC SYSTEMS, INC.</option>
+        <option value="Orgenics, Ltd">Orgenics, Ltd</option>
+        <option value="Orasure Technologies Inc.">Orasure Technologies Inc.</option>
+        <option value="Standard Diagnostics, Inc.">Standard Diagnostics, Inc.</option>
+        <option value="JSI R&T INSTITUTE, INC.">JSI R&T INSTITUTE, INC.</option>
+        <option value="BIO-RAD LABORATORIES (FRANCE)">BIO-RAD LABORATORIES (FRANCE)</option>
+        <option value="MYLAN LABORATORIES LTD (FORMERLY MATRIX LABORATORIES)">MYLAN LABORATORIES LTD (FORMERLY MATRIX LABORATORIES)</option>
+        <option value="S. BUYS WHOLESALER">S. BUYS WHOLESALER</option>
+        <option value="IDA FOUNDATION">IDA FOUNDATION</option>
+        <option value="HETERO LABS LIMITED">HETERO LABS LIMITED</option>
+        <option value="STRIDES ARCOLAB LIMITED">STRIDES ARCOLAB LIMITED</option>
+        <option value="ASPEN PHARMACARE">ASPEN PHARMACARE</option>
+        <option value="SHANGHAI KEHUA BIOENGINEERING CO.,LTD. (KHB)">SHANGHAI KEHUA BIOENGINEERING CO.,LTD. (KHB)</option>
+        <option value="GLAXOSMITHKLINE EXPORT LIMITED">GLAXOSMITHKLINE EXPORT LIMITED</option>
+        <option value="Hoffmann-La Roche ltd Basel">Hoffmann-La Roche ltd Basel</option>
+        <option value="REINBOLD EXPORT IMPORT">REINBOLD EXPORT IMPORT</option>
+        <option value="SCMS from RDC">SCMS from RDC</option>
+        <option value="PHARMACY DIRECT">PHARMACY DIRECT</option>
+        <option value="EMCURE PHARMACEUTICALS LTD">EMCURE PHARMACEUTICALS LTD</option>
+        <option value="MICRO LABS LIMITED">MICRO LABS LIMITED</option>
+        <option value="Other">Other</option>
+        <option value="LAWRENCE LABORATORIES (SUBSIDIARY OF BRISTOL MYERS SQUIBB)">LAWRENCE LABORATORIES (SUBSIDIARY OF BRISTOL MYERS SQUIBB)</option>
+      </select>
+    </div>
+
+  
+    <div class="input-container">
+      <label for="brand">Brand:</label>
+      <select id="brand" name="Brand" class="input-style">
+        <option value="" disabled selected>Select Brand</option>
+        <option value="Other">Other</option>
+        <option value="Generic">Generic</option>
+        <option value="Determine">Determine</option>
+        <option value="Stocrin/Sustiva">Stocrin/Sustiva</option>
+        <option value="Aluvia">Aluvia</option>
+        <option value="Uni-Gold">Uni-Gold</option>
+        <option value="Videx">Videx</option>
+        <option value="First Response">First Response</option>
+        <option value="Stat-Pak">Stat-Pak</option>
+        <option value="OraQuick">OraQuick</option>
+        <option value="Bioline">Bioline</option>
+        <option value="Retrovir">Retrovir</option>
+        <option value="Viread">Viread</option>
+        <option value="Zerit">Zerit</option>
+        <option value="Capillus">Capillus</option>
+        <option value="Genie">Genie</option>
+        <option value="Invirase">Invirase</option>
+        <option value="Videx EC">Videx EC</option>
+        <option value="Ziagen">Ziagen</option>
+        <option value="Coartem">Coartem</option>
+        <option value="Viramune">Viramune</option>
+        <option value="Atripla">Atripla</option>
+        <option value="Kaletra">Kaletra</option>
+        <option value="Epivir">Epivir</option>
+        <option value="Norvir">Norvir</option>
+        <option value="Truvada">Truvada</option>
+        <option value="Clearview">Clearview</option>
+        <option value="Colloidal Gold">Colloidal Gold</option>
+        <option value="Trizivir">Trizivir</option>
+        <option value="Crixivan">Crixivan</option>
+        <option value="Intelence">Intelence</option>
+        <option value="Prezista">Prezista</option>
+        <option value="Isentress">Isentress</option>
+        <option value="Other">Other</option>
+        <option value="Reyataz">Reyataz</option>
+      </select>
+    </div>
+
+
+
+
+
+    <div class="input-container">
+      <label for="dosage-form">Dosage Form:</label>
+      <select id="dosage-form" name="Dosage Form" class="input-style">
+        <option value="" disabled selected>Select Dosage Form</option>
+        <option value="Test kit">Test kit</option>
+        <option value="Oral suspension">Oral suspension</option>
+        <option value="Tablet">Tablet</option>
+        <option value="Capsule">Capsule</option>
+        <option value="Oral solution">Oral solution</option>
+        <option value="Tablet - FDC">Tablet - FDC</option>
+        <option value="Powder for oral solution">Powder for oral solution</option>
+        <option value="Test kit - Ancillary">Test kit - Ancillary</option>
+        <option value="Chewable/dispersible tablet">Chewable/dispersible tablet</option>
+        <option value="Delayed-release capsules - blister">Delayed-release capsules - blister</option>
+        <option value="Tablet - blister">Tablet - blister</option>
+        <option value="Tablet - FDC + blister">Tablet - FDC + blister</option>
+        <option value="Tablet - FDC + co-blister">Tablet - FDC + co-blister</option>
+        <option value="Injection">Injection</option>
+        <option value="Delayed-release capsules">Delayed-release capsules</option>
+        <option value="Chewable/dispersible tablet - FDC">Chewable/dispersible tablet - FDC</option>
+        <option value="Oral powder">Oral powder</option>
+      </select>
+    </div>
+
+
+    <div class="input-container">
+      <label for="first-line">First Line Designation:</label>
+      <select id="first-line" name="First Line Designation" class="input-style">
+        <option value="" disabled selected>Select First Line Designation</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="input-container">
+       <label for="delivery-status">Delivery Status:</label>
+       <select id="delivery-status" name="Delivery Status" class="input-style">
+         <option value="" disabled selected>Select Delivery Status</option>
+         <option value="On Time">On Time</option>
+         <option value="Early">Early</option>
+         <option value="Delayed">Delayed</option>
+       </select>
+    </div>
+  
+  
+    <div class="input-container">
+      <label for="line-item-value">Line Item Value:</label>
+      <input type="number" step="0.01" id="line-item-value" name="Line Item Value" class="input-style" required>
+    </div>
+  
+    <div class="input-container">
+      <label for="weight">Weight (Kilograms):</label>
+      <input type="number" id="weight" name="Weight (Kilograms)" step="0.01" class="input-style" required>
+    </div>
+    
+    
+  
+    <div class="input-container">
+      <label for="line-item-insurance">Line Item Insurance (USD):</label>
+      <input type="number" step="0.01" id="line-item-insurance" name="Line Item Insurance (USD)" class="input-style" required>
+    </div>
+
+
+
+ 
+
+  
+    <br>
+    <div class="input-container">
+      <button id="predict-button" type="submit" class="btn-bot">Predict</button>
+    </div>
+  </form>
+</div>
+   
+</body>
+</html>
